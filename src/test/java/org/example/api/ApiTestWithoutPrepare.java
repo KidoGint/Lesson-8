@@ -9,12 +9,12 @@ import java.io.IOException;
 import static io.restassured.RestAssured.given;
 
 //В этом классе реализован пример отправки запроса GET без использования спецификации запроса new RequestSpecBuilder(),
-//то есть все необходимые параметры переданы одинм методом
+//то есть все необходимые параметры переданы одним методом
 public class ApiTestWithoutPrepare {
     @Test
     public void testGet() throws IOException {
         // Читаем конфигурационный файл в System.properties
-        System.getProperties().load(ClassLoader.getSystemResourceAsStream("my.properties"));
+        System.getProperties().load(ClassLoader.getSystemResourceAsStream("main\\my.properties"));
         given()//ДАНО:
                 .baseUri("https://petstore.swagger.io/v2/") // задаём базовый адрес каждого ресурса
                 .header(new Header("api_key", System.getProperty("api.key")))// задаём заголовок с токеном для авторизации

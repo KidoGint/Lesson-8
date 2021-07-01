@@ -50,7 +50,7 @@ public class ApiTest {
     @Test
     public void checkObjectSave() {
         Pet pet = new Pet(); // создаём экземпляр POJO объекта Pet
-        int id = new Random().nextInt(500000); // просто нужно создать произвольный айди
+        int id = Integer.parseInt(System.getProperty("petId"));//new Random().nextInt(500000); // просто нужно создать произвольный айди
         String name = "Pet_" + UUID.randomUUID().toString(); // UUID гарантирует уникальность строки
         pet.setId(id);
         pet.setName(name);
@@ -99,7 +99,7 @@ public class ApiTest {
 
     @Test
     public void tetDelete() throws IOException {
-        System.getProperties().load(ClassLoader.getSystemResourceAsStream("my.properties"));
+       // System.getProperties().load(ClassLoader.getSystemResourceAsStream("my.properties"));
         given()
                 .pathParam("petId", System.getProperty("petId"))
             .when()
